@@ -1,0 +1,15 @@
+def is_happy(n, memo=None):
+    if memo is None:
+        memo = {}
+    if n == 1:
+        return True
+    if n in memo:
+        return memo[n]
+    memo[n] = is_happy(sum(int(digit)**2 for digit in str(n)), memo)
+    return memo[n]
+
+number = 19
+if is_happy(number):
+    print(f"{number} is a happy number.")
+else:
+    print(f"{number} is not a happy number.")
